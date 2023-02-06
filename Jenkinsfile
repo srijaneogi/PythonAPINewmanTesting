@@ -1,10 +1,9 @@
 pipeline {
-    agent any
+    agent { docker { image 'mudaliar20/python:v1' } }
     stages {
         stage('build') {
             steps {
-                sh 'whoami'
-                sh 'python3 demo2.py -coll_run Titan.postman_collection.json'
+                sh 'python demo2.py -coll_run Titan.postman_collection.json'
             }
         }
     }

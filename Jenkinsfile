@@ -12,15 +12,15 @@ pipeline {
     stage('wait') {
                     steps {
                         script {
-                            timeout(10) {
-                                def folder = new File( '${WORKSPACE}/newman1' )
+                            timeout(2) {
+                                def folder = new File( '${WORKSPACE}/newman' )
                                 println "Waiting for " + folder
                                 println "folder==" + folder.exists()
 				sh 'mkdir ${WORKSPACE}/newman1'
 				sh 'ls -ltr'
                                 waitUntil {
-					def r = sh script: "[[ -d './newman1' ]]", returnStatus: true 
-			           return r == 0                                       
+					def exitCode = sh script: 'find . -name newman | egrep .', returnStatus: true
+                                        boolean exists = exitCode == 0                                    
                                 }
                             }
                         }
@@ -29,7 +29,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'newman/*.html'
+                archiveArtifacts artifacts: 'newman/*.html'
 		  cleanWs()
         }
     }

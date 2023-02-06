@@ -16,6 +16,7 @@ pipeline {
                                 def folder = new File( 'newman' )
                                 println "Waiting for " + folder
                                 println "folder==" + folder.exists()
+				sh 'ls -ltr'
                                 waitUntil {
                                    def r = sh script: "[[ -d 'newman' ]]", returnStatus: true                                         
 								   return r == 0

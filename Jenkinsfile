@@ -20,7 +20,7 @@ pipeline {
 				sh 'ls -ltr'
                                 waitUntil {
 					def exitCode = sh script: 'find . -name newman | egrep .', returnStatus: true
-                                        boolean exists = exitCode == 0                                    
+                                        exitCode == 0                                    
                                 }
                             }
                         }

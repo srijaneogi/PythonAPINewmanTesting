@@ -4,6 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 sh 'pip3 install docker'
+                sh 'pwd'
                 sh 'python3 demo2.py -coll_run Titan.postman_collection.json'
             }
         }

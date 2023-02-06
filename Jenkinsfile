@@ -28,7 +28,7 @@ pipeline {
     post {
         always {
                 archiveArtifacts artifacts: 'newman/*.html'
-		  cleanWs()
+		publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'newman', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
         }
     }
 }

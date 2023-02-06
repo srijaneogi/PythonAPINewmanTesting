@@ -16,8 +16,6 @@ pipeline {
                                 def folder = new File( '${WORKSPACE}/newman' )
                                 println "Waiting for " + folder
                                 println "folder==" + folder.exists()
-				sh 'mkdir ${WORKSPACE}/newman1'
-				sh 'ls -ltr'
                                 waitUntil {
 					def exitCode = sh script: 'find . -name newman | egrep .', returnStatus: true
                                         exitCode == 0                                    

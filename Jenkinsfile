@@ -13,7 +13,7 @@ pipeline {
                     steps {
                         script {
                             timeout(10) {
-                                def folder = new File( 'newman' )
+                                
                                 println "Waiting for " + folder
                                 println "folder==" + folder.exists()
 				sh 'mkdir newman1'

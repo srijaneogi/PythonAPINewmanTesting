@@ -18,8 +18,7 @@ pipeline {
                                 println "folder==" + folder.exists()
 				sh 'ls -ltr'
                                 waitUntil {
-                                   def r = sh script: "[[ -d 'newman' ]]", returnStatus: true                                         
-								   return r == 0
+                                   def r = sh script: "[[ -d './newman' ]]", returnStatus: true                                         
                                 }
                             }
                         }

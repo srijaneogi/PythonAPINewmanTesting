@@ -9,6 +9,22 @@ pipeline {
         }
     }
     
+    stage('wait') {
+                    steps {
+                        script {
+                            timeout(10) {
+                                def folder = new File( 'newman' )
+                                println "Waiting for " + folder
+                                println "folder==" + folder.exists()
+                                waitUntil {
+                                   def r = sh script: "[[ -d 'newman' ]]", returnStatus: true                                         
+								   return r == 0
+                                }
+                            }
+                        }
+                    }
+                }
+    
     post {
         always {
             archiveArtifacts artifacts: 'newman/*.html'

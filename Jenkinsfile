@@ -16,9 +16,10 @@ pipeline {
                                 def folder = new File( 'newman' )
                                 println "Waiting for " + folder
                                 println "folder==" + folder.exists()
+				sh 'mkdir newman1'
 				sh 'ls -ltr'
                                 waitUntil {
-                                   def r = sh script: "[[ -d './newman' ]]", returnStatus: true                                         
+                                   def r = sh script: "[[ -d 'newman1' ]]", returnStatus: true,return r == 0                                       
                                 }
                             }
                         }

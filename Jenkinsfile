@@ -11,6 +11,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'newman/*.html'
+            cleanWs()
         }
     }
 }

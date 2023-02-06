@@ -13,13 +13,13 @@ pipeline {
                     steps {
                         script {
                             timeout(10) {
-                                def folder = new File( 'newman1' )
+                                def folder = new File( '${WORKSPACE}/newman1' )
                                 println "Waiting for " + folder
                                 println "folder==" + folder.exists()
-				sh 'mkdir newman1'
+				sh 'mkdir ${WORKSPACE}/newman1'
 				sh 'ls -ltr'
                                 waitUntil {
-					def r = sh script: "[[ -d '${WORKSPACE}/newman1' ]]", returnStatus: true 
+					def r = sh script: "[[ -d "${WORKSPACE}/newman1" ]]", returnStatus: true 
 			           return r == 0                                       
                                 }
                             }

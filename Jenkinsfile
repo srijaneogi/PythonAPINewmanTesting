@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'mudaliar20/python:v2' } }
+    agent any
     stages {
         stage('build') {
             steps {

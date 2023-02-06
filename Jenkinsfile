@@ -19,7 +19,7 @@ pipeline {
 				sh 'mkdir ${WORKSPACE}/newman1'
 				sh 'ls -ltr'
                                 waitUntil {
-					def r = sh script: "[[ -d "./newman1" ]]", returnStatus: true 
+					def r = sh script: "[[ -d './newman1' ]]", returnStatus: true 
 			           return r == 0                                       
                                 }
                             }

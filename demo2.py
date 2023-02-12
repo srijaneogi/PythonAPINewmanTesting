@@ -8,4 +8,4 @@ coll_run = args.coll_run
 
 client = docker.from_env()
 
-container = client.containers.run("mudaliar20/html:latest", "run  /etc/newman/" +coll_run+ " --ignore-redirects -r cli,json,htmlextra",volumes={os.getcwd(): {'bind': '/etc/newman/', 'mode': 'rw'}}, detach=True)
+container = client.containers.run("mudaliar20/html:latest", "run  /etc/newman/" +coll_run+ " --ignore-redirects -r cli,json,htmlextra",volumes={os.getcwd(): {'bind': '/etc/newman/', 'mode': 'rw'},'/var/run/docker.sock:/var/run/docker.sock'}, detach=True)
